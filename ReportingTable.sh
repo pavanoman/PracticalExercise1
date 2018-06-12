@@ -31,7 +31,7 @@ hive -e "INSERT OVERWRITE TABLE hive_practical_exercise_1.user_report SELECT use
 #Is User Active Query
 hive -e "ALTER TABLE hive_practical_exercise_1.user_report ADD COLUMNS (is_active boolean);"
 
-hive -e "INSERT OVERWRITE TABLE hive_practical_exercise_1.user_report select user_report.id, user_report.cnt,user_report.total_inserts, user_report.total_deletes,user_report.last_activity_type, ftab.s from    (SELECT a.user_id, if  (10000000000 - ts < 172800, 1,0) s from (select activitylog.user_id, ts from (SELECT user_id,MAX(timestamp) ts from hive_practical_exercise_1.activitylog group by user_id) z left outer join hive_practical_exercise_1.activitylog on z.ts= activitylog.timestamp) a) ftab     right outer join hive_practical_exercise_1.user_report on user_report.id=ftab.user_id;"
+hive -e "INSERT OVERWRITE TABLE hive_practical_exercise_1.user_report select user_report.id, user_report.cnt,user_report.total_inserts, user_report.total_deletes,user_report.last_activity_type, ftab.s from    (SELECT a.user_id, if  ($NOW - ts < 172800, 1,0) s from (select activitylog.user_id, ts from (SELECT user_id,MAX(timestamp) ts from hive_practical_exercise_1.activitylog group by user_id) z left outer join hive_practical_exercise_1.activitylog on z.ts= activitylog.timestamp) a) ftab     right outer join hive_practical_exercise_1.user_report on user_report.id=ftab.user_id;"
 
 
 #Upload Count Query
