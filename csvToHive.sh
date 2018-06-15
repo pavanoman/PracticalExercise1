@@ -18,7 +18,7 @@ do
 
 	hive -e "CREATE TABLE hive_practical_exercise_1.csv ( user_id int, file_name String, timestamp int) row format delimited fields terminated by ',' stored as textfile tblproperties ('skip.header.line.count'='1');"
 
-	hive -e "LOAD DATA INPATH 'workshop/hive/CSVfiles/csvToUpload2.csv' OVERWRITE INTO TABLE hive_practical_exercise_1.csv;"
+	hive -e "LOAD DATA INPATH 'workshop/hive/CSVfiles/csvToUpload.csv' OVERWRITE INTO TABLE hive_practical_exercise_1.csv;"
 
 	hive -e "SELECT * FROM hive_practical_exercise_1.csv;"
 
