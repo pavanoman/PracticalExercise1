@@ -3,7 +3,7 @@
 echo Creating Table user_report.........
 
 NOW=$(date +"%s")
-echo $NOW
+
 
 
 hive -e "DROP TABLE IF EXISTS hive_practical_exercise_1.user_report;"
